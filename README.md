@@ -23,7 +23,7 @@ Configuration files are essential part of the development of our applications an
 All configuration files are meant to be as independent as possible to allow newcomers and contributors to easily onboard the application.
 
 > [!TIP]
-> All configuration files are explained in the [onboarding](./onboarding.md) document.
+> All configuration files are explained in the [onboarding](./ONBOARDING.md) document.
 
 ### Readme files / documentation files
 
