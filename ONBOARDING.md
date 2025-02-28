@@ -32,6 +32,15 @@ Current version of the file can be seen here [root Directory.Build.props](./root
   - uses default folder if not set
 - `$(NUGET_PACKAGES_BUILD_PATH)` - folder, where all projects should build their nuget packages
 
+```xml
+<!-- file: Directory.Build.props -->
+<Project>
+    <PropertyGroup>
+      <NUGET_PACKAGES_BUILD_PATH>path/to/your/folder</NUGET_PACKAGES_BUILD_PATH>
+    </PropertyGroup>
+</Project>
+```
+
 > [!TIP]
 > `$(MSBuildThisFileDirectory)` is property from MSBuild. To see all MSBuild variables visit [MSBuild reserved and well-known properties](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties) and [Common MSBuild project properties](https://learn.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties)
 
@@ -41,6 +50,19 @@ When developing .NET application or package, some variables need to be set in th
 
 - `$(APP_NAME)` - __required__ - sets the application name, which is used in the root `Directory.Build.props` file to specify artifact build output path
 - `$(ProjectRoot)` - __required__ - should be always set to the `$(MSBuildThisFileDirectory)`. All projects will reference other projects relative to this path
+
+All project-level `Directory.Build.props` __MUST__ include file above
+
+```xml
+<!-- file: Directory.Build.props -->
+<Project> 
+  <PropertyGroup>
+    <APP_NAME>name_of_app_or_library</APP_NAME>    
+    <ProjectRoot>$(MSBuildThisFileDirectory)</ProjectRoot>
+  </PropertyGroup>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+</Project>
+```
 
 ### Project-level user secrets
 
