@@ -1,0 +1,12 @@
+<Project>
+    <PropertyGroup>
+        <NUGET_PACKAGES_BUILD_PATH>$(MSBuildThisFileDirectory)\NuGetBuilds</NUGET_PACKAGES_BUILD_PATH>
+        <!--<NUGET_PACKAGES>$(MSBuildThisFileDirectory)\NuGet</NUGET_PACKAGES>-->
+
+        <UseArtifactsOutput>true</UseArtifactsOutput>
+        <ArtifactsPath>$(MSBuildThisFileDirectory)artifacts\$(APP_NAME)</ArtifactsPath>
+
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageOutputPath>$(NUGET_PACKAGES_BUILD_PATH)</PackageOutputPath>
+    </PropertyGroup>
+</Project>
